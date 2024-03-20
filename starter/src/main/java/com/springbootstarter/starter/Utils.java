@@ -7,7 +7,11 @@ public class Utils
 {
     public int ans=100;
 
-    public Utils() {
+    public Utils()
+    {
+        System.out.println("im invoked"+getClass().getSimpleName());
+
+
 
     }
 }

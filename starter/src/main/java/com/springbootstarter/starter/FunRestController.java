@@ -10,17 +10,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class FunRestController
 {
     private Coach coach;
-    @Autowired
+    private Coach newCoach;
     private Utils utils;
+
+
     @Value("${name}")
     private String coachName;
     @Value("${name}")
     private String teamName;
 
     @Autowired
-    public FunRestController(@Qualifier("basketCoach")Coach coach)
+    public FunRestController(@Qualifier("method1")Coach coach,Utils utils,@Qualifier("method1")Coach myCoach)
     {
+        System.out.println("im invoked"+getClass().getSimpleName());
         this.coach = coach;
+        this.newCoach=myCoach;
+        this.utils=utils;
     }
     @GetMapping("/")
     public String get()
@@ -33,5 +38,14 @@ public class FunRestController
     public String getMotto()
     {
         return coach.getMotto()+" "+utils.ans;
+    }
+
+    @GetMapping("/check")
+    public String getresult()
+    {
+        return "comparing beans :"+(this.newCoach==this.coach);
+    }
+
+    public FunRestController() {
     }
 }
