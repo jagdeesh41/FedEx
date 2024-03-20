@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 //@Primary
 @Component
+@Primary
 public class BasketCoach implements Coach{
     @Override
     public String getMotto()

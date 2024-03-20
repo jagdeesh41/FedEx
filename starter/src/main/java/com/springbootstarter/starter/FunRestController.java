@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FunRestController
 {
     private Coach coach;
+    @Autowired
     private Utils utils;
     @Value("${name}")
     private String coachName;
@@ -17,17 +18,10 @@ public class FunRestController
     private String teamName;
 
     @Autowired
-    public FunRestController(@Qualifier("BasketCoach") Coach coach)
+    public FunRestController(@Qualifier("basketCoach")Coach coach)
     {
         this.coach = coach;
     }
-
-    @Autowired
-    public FunRestController(Utils utils)
-    {
-        this.utils = utils;
-    }
-
     @GetMapping("/")
     public String get()
     {
@@ -39,6 +33,5 @@ public class FunRestController
     public String getMotto()
     {
         return coach.getMotto()+" "+utils.ans;
-
     }
 }
